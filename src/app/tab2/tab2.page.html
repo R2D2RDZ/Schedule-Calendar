@@ -12,23 +12,22 @@
       <ion-title size="large">Tab 2</ion-title>
     </ion-toolbar>
   </ion-header>
-<form>
   <ion-grid>
     <ion-row class="ion-justify-content-center">
       <ion-col size-md="12" size-lg="4">
       <ion-item>
         <ion-label position="floating">Nombre</ion-label>
-        <ion-input [(ngModel)] = "selectedName" required></ion-input>
+        <ion-input [(ngModel)] = "selectedName"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Descripcion</ion-label>
-        <ion-input [(ngModel)] = "selectedDesc" required></ion-input>
+        <ion-input [(ngModel)] = "selectedDesc"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Horas</ion-label>
         <!--  <ion-input type="number" [(ngModel)] = "selectedHora"></ion-input> -->
         <ion-select>
-          <ion-select-option *ngFor="let number of [1,2,3,4,5,6]" [value]="number" required>{{number}}</ion-select-option>
+          <ion-select-option *ngFor="let number of [1,2,3,4,5,6]" [value]="number">{{number}}</ion-select-option>
         </ion-select>
       </ion-item>
       </ion-col>
@@ -48,7 +47,6 @@
         </ion-col>
     </ion-row>
   </ion-grid>
-</form>
   <p>
     date selected {{datetime.value}}
   </p>

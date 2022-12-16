@@ -11,6 +11,7 @@ export class CitasService {
 
   public addCita(date: Cita){
     this.citas.push(date);
+    console.log(this.citas);
   }
 
   public getCitas(){

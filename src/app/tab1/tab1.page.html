@@ -13,8 +13,8 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-list *ngFor="let cita of citas">
-    <ion-card>
+  <ion-list>
+    <ion-card *ngFor="let cita of citas" (click)="log()">
       <ion-card-header>
         <ion-card-title>{{cita.nombre}}, {{cita.fecha | date:"short"}}</ion-card-title>
       </ion-card-header>

@@ -14,6 +14,11 @@ export class Tab1Page {
 
   ngOnInit(){
     this.citas = this.citasservice.getCitas();
+    console.log(this.citas);
+  }
+
+  log(){
+    console.log(this.citas);
   }
 
 }

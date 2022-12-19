@@ -12,41 +12,43 @@
       <ion-title size="large">Tab 2</ion-title>
     </ion-toolbar>
   </ion-header>
+  <form [formGroup]="citaForm" (ngSubmit)="submitForm()" novalidate>
   <ion-grid>
     <ion-row class="ion-justify-content-center">
       <ion-col size-md="12" size-lg="4">
       <ion-item>
         <ion-label position="floating">Nombre</ion-label>
-        <ion-input [(ngModel)] = "selectedName"></ion-input>
+        <ion-input formControlName="name" required></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Descripcion</ion-label>
-        <ion-input [(ngModel)] = "selectedDesc"></ion-input>
+        <ion-input formControlName="desc" required></ion-input>
       </ion-item>
       <ion-item>
         <ion-label position="floating">Horas</ion-label>
         <!--  <ion-input type="number" [(ngModel)] = "selectedHora"></ion-input> -->
-        <ion-select>
+        <ion-select formControlName="hour" required>
           <ion-select-option *ngFor="let number of [1,2,3,4,5,6]" [value]="number">{{number}}</ion-select-option>
         </ion-select>
       </ion-item>
       </ion-col>
       <ion-col size-md="12" size-lg="auto">
         <ion-datetime #datetime
-        [showDefaultButtons]="true"
         locale="es-MX"
         hour-cycle="h23" 
         minuteValues="0"
-        [(ngModel)] = "selectedDate"
-        (ionChange) = "confirm()"
+        formControlName="date" required
         >
-        <ion-buttons slot="buttons">
-          <ion-button color="primary" (click)="datetime.confirm()">Guardar</ion-button>
-        </ion-buttons>
         </ion-datetime>
         </ion-col>
     </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="auto">
+        <ion-button type="submit">Agendar</ion-button>
+      </ion-col>
+    </ion-row>
   </ion-grid>
+</form>
   <p>
     date selected {{datetime.value}}
   </p>

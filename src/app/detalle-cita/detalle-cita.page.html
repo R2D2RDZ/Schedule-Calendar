@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start">
+      <ion-back-button defaultHref="/tabs"></ion-back-button>
+  </ion-button>
+    <ion-title>detalle-cita</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      {{cita.fecha | date:"short"}}
+    </ion-item>
+    <ion-item>
+      {{cita.nombre}}
+    </ion-item>
+    <ion-item>
+      {{cita.descripcion}}
+    </ion-item>
+    <ion-item>
+      {{cita.horas}}
+    </ion-item>
+  </ion-list>
+
+</ion-content>

@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component , OnInit} from '@angular/core';
 import { CitasService } from '../services/citas.service';
 import {Cita} from '../Models/Cita.model';
-import { format } from 'path';
-import { formatDate } from '@angular/common';
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-tab2',
@@ -15,9 +14,32 @@ export class Tab2Page {
   public selectedName: string="";
   public selectedDesc: string="";
   public selectedHora: number=0;
+  public citaForm: FormGroup;
+
+  
   //ncita: Cita = {nombre: "", descripcion: "", fecha: "", horas: 0};
 
-  constructor(private citasservice: CitasService) {}
+  constructor(private citasservice: CitasService, public formBuilder: FormBuilder) {}
+
+  ngOnInit(){
+    this.citaForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      desc: ['', [Validators.required]],
+      hour: ['', [Validators.required]],
+      date: ['', [Validators.required]]
+    })
+  }
+
+  submitForm(){
+    if (!this.citaForm.valid) {
+      console.log('Please provide all the required values!')
+      return false;
+    } else {
+      console.log(this.citaForm.value);
+      this.confirm();
+      return true;
+    }
+  }
 
   confirm(){
     //console.log(this.selectedDate);
@@ -26,7 +48,7 @@ export class Tab2Page {
     this.ncita.fecha = this.selectedDate;
     this.ncita.descripcion = this.selectedDesc ;
     this.ncita.horas = this.selectedHora; */
-    this.citasservice.addCita({nombre: this.selectedName, descripcion: this.selectedDesc, fecha: this.selectedDate, horas: this.selectedHora});
+    this.citasservice.addCita({nombre: this.citaForm.value.name, descripcion: this.citaForm.value.desc, fecha: this.citaForm.value.date, horas: this.citaForm.value.hour});
     console.log(this.citasservice.getCitas());
   }
 

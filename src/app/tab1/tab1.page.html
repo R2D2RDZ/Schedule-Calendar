@@ -14,12 +14,12 @@
   </ion-header>
 
   <ion-list>
-    <ion-card *ngFor="let cita of citas" (click)="log()">
+    <ion-card *ngFor="let cita of citas" (click)="log()" [routerLink]="['/detalle-cita', cita.fecha]">
       <ion-card-header>
-        <ion-card-title>{{cita.nombre}}, {{cita.fecha | date:"short"}}</ion-card-title>
+        <ion-card-title>{{cita.nombre}}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        {{cita.descripcion}}
+        {{cita.fecha | date:"short"}}
       </ion-card-content>
     </ion-card>
   </ion-list>

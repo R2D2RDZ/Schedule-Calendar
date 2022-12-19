@@ -17,4 +17,8 @@ export class CitasService {
   public getCitas(){
     return this.citas;
   }
+
+  public getCita(date: string){
+    return this.citas.find(cita => cita.fecha == date)
+  }
 }

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Proyecto } from '../Models/Proyecto.model';
+import { ProyectosService } from '../services/proyectos.service';
 
 @Component({
   selector: 'app-tab3',
@@ -7,6 +9,16 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  projects: Proyecto[];
+  tags: string[] = ["All", "Unity","C#","JavaScript","Python"];
+  selectedtag: string = "All";
+  filter: any;
+  constructor(private proyectosservice: ProyectosService) {}
 
+  ngOnInit(){
+    this.projects = this.proyectosservice.getProyectos();
+    console.log(this.projects);
+  }
 }
+
+//*ngIf= "project.tags.includes(selectedtag)"

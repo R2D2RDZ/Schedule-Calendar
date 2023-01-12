@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Portafolio
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,33 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
+      <ion-title size="large">Portafolio</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-title size="large">Projects</ion-title>
+  <ion-segment [(ngModel)]="filter" value="All" (ionChange)="selectedtag=filter">
+    <ion-segment-button *ngFor="let tag of tags" value={{tag}}>
+      <ion-label>{{tag}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-grid>
+    <ion-row>
+      <ng-container *ngFor="let project of projects">
+      <ion-col size-lg="4" size-md="6" size-xs="12"  *ngIf="project.tags.includes(filter) || filter=='All'">
+        <ion-card>
+          <img src="https://ionicframework.com/docs/img/demos/card-media.png" />
+          <ion-card-header>
+            <ion-card-title>{{project.nombre}}</ion-card-title>
+            <ion-card-subtitle>{{project.tags}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            {{project.descripcionCorta}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ng-container>
+    </ion-row>
+  </ion-grid>
+  <ion-label>{{selectedtag}}</ion-label>
 </ion-content>

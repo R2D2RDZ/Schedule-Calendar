@@ -10,7 +10,9 @@ import {Cita} from '../Models/Cita.model';
 export class CitasService {
 
   private citas: Cita[]= [];
-  constructor(private firestore: Firestore) { }
+  constructor(private firestore: Firestore) {
+    this.getCitas().subscribe(citas => this.citas = citas);
+   }
 
   public addCita(date: Cita){
     this.citas.push(date);

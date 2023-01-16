@@ -15,4 +15,18 @@ export class UsuarioService {
   logout(){
     return signOut(this.auth);
   }
+
+  getUser(){
+    return this.auth.currentUser;
+  }
+
+  getEmail(): string {
+    return this.auth.currentUser?.email ? this.auth.currentUser?.email : "";
+  }
+
+  getName(){
+    return this.auth.currentUser?.displayName ? this.auth.currentUser.displayName : "";
+  }
+
+
 }

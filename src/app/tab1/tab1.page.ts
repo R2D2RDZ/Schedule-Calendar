@@ -16,6 +16,9 @@ export class Tab1Page {
   ngOnInit(){
     this.citasservice.getCitas().subscribe(citas => this.citas = citas);
     console.log(this.citas);
+    console.log(this.usuarioservice.getUser()); 
+    console.log(this.usuarioservice.getEmail()); 
+    console.log(this.usuarioservice.getName()); 
   }
 
   log(){

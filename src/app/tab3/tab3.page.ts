@@ -12,7 +12,7 @@ export class Tab3Page {
   projects: Proyecto[];
   tags: string[] = ["All", "Unity","C#","JavaScript","Python"];
   selectedtag: string = "All";
-  filter: any;
+  filter: string = "All";
   constructor(private proyectosservice: ProyectosService) {}
 
   ngOnInit(){

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CitasService } from '../services/citas.service';
 import {Cita} from '../Models/Cita.model';
 import { UsuarioService } from '../services/usuario.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -11,7 +12,7 @@ import { UsuarioService } from '../services/usuario.service';
 export class Tab1Page {
 
   citas: Cita[] = [];
-  constructor(private citasservice: CitasService, private usuarioservice: UsuarioService) {}
+  constructor(private citasservice: CitasService, private usuarioservice: UsuarioService, private router: Router) {}
 
   ngOnInit(){
     this.citasservice.getCitas().subscribe(citas => this.citas = citas);
@@ -28,7 +29,10 @@ export class Tab1Page {
   Logout(){
     console.log("Logged out")
     this.usuarioservice.logout()
-    .then(()=>console.log("Logged out"))
+    .then(()=>{
+      console.log("Logged out")
+      this.router.navigate(["/login"])
+    })
     .catch(error => console.log(error));
   }
 }

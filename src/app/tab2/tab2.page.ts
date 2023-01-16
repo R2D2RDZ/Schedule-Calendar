@@ -4,6 +4,7 @@ import {Cita} from '../Models/Cita.model';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { UsuarioService } from '../services/usuario.service';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -23,7 +24,12 @@ export class Tab2Page {
   
   //ncita: Cita = {nombre: "", descripcion: "", fecha: "", horas: 0};
 
-  constructor(private citasservice: CitasService, public formBuilder: FormBuilder, private usuarioservice: UsuarioService, private toastcontroller: ToastController) {
+  constructor(
+    private citasservice: CitasService, 
+    public formBuilder: FormBuilder, 
+    private usuarioservice: UsuarioService, 
+    private toastcontroller: ToastController,
+    private router: Router) {
   }
 
   ngOnInit(){
@@ -60,6 +66,7 @@ export class Tab2Page {
     this.ncita.horas = this.selectedHora; */
     this.citasservice.addCita({nombre: this.citaForm.value.name, descripcion: this.citaForm.value.desc, fecha: this.citaForm.value.date, horas: this.citaForm.value.hour, email: this.usuarioservice.getEmail()});
     console.log(this.citasservice.getCitas());
+    this.router.navigate(["/tabs"]);
   }
 
   async showtoast(mensaje: string){

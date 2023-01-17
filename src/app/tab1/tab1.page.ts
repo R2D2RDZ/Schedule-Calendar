@@ -15,7 +15,10 @@ export class Tab1Page {
   constructor(private citasservice: CitasService, private usuarioservice: UsuarioService, private router: Router) {}
 
   ngOnInit(){
+    if (this.usuarioservice.getEmail() == "r2d2rdz.secenas@gmail.com")
     this.citasservice.getCitas().subscribe(citas => this.citas = citas);
+    else
+    this.citasservice.getUserCitas().subscribe(citas => this.citas = citas);
     console.log(this.citas);
     console.log(this.usuarioservice.getUser()); 
     console.log(this.usuarioservice.getEmail()); 
